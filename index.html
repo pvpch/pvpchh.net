@@ -1,0 +1,1146 @@
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клан PvPch | Gamepe.ru</title>
+    <style>
+        /* === ОСНОВНЫЕ СТИЛИ === */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+        
+        :root {
+            --red: #ff3a4c;
+            --purple: #9b59b6;
+            --green: #2ecc71;
+            --yellow: #f1c40f;
+            --blue: #3498db;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --text: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* === АНИМАЦИИ === */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(255, 58, 76, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(255, 58, 76, 0.9), 0 0 30px rgba(155, 89, 182, 0.7); }
+            100% { text-shadow: 0 0 5px rgba(255, 58, 76, 0.7); }
+        }
+        
+        @keyframes borderGlow {
+            0% { box-shadow: 0 0 5px var(--red); }
+            25% { box-shadow: 0 0 15px var(--purple); }
+            50% { box-shadow: 0 0 15px var(--green); }
+            75% { box-shadow: 0 0 15px var(--blue); }
+            100% { box-shadow: 0 0 5px var(--red); }
+        }
+        
+        /* === НАВИГАЦИЯ === */
+        .navbar {
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--red), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 3s infinite;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--red), var(--purple));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:before {
+            width: 100%;
+        }
+        
+        /* === ГЕРОЙ СЕКЦИЯ === */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: radial-gradient(circle at center, var(--darker) 0%, var(--dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%239b59b6' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--red), var(--purple), var(--blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--red), var(--purple));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(155, 89, 182, 0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(155, 89, 182, 0.7);
+        }
+        
+        /* === СЕКЦИИ === */
+        .section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--red), var(--purple), var(--blue));
+        }
+        
+        .about {
+            background-color: rgba(18, 18, 18, 0.7);
+        }
+        
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            line-height: 1.8;
+        }
+        
+        /* === КАРТОЧКИ УЧАСТНИКОВ === */
+        .members {
+            background-color: var(--darker);
+        }
+        
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .member-card {
+            background: linear-gradient(145deg, #151515, #0d0d0d);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            animation: borderGlow 3s infinite;
+        }
+        
+        .member-card:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--red), var(--purple), var(--blue), var(--green), var(--yellow));
+            z-index: -1;
+            border-radius: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .member-card:hover:before {
+            opacity: 1;
+        }
+        
+        .member-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .member-role {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(45deg, var(--red), var(--purple));
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .member-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        /* === ПРАВИЛА === */
+        .rules {
+            background-color: rgba(18, 18, 18, 0.7);
+        }
+        
+        .rules-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .rule-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: rgba(10, 10, 10, 0.5);
+            border-left: 3px solid var(--purple);
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .rule-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--purple);
+        }
+        
+        /* === ФУТЕР === */
+        .footer {
+            background-color: var(--darker);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, var(--red), var(--purple));
+        }
+        
+        /* === МОДАЛЬНЫЕ ОКНА === */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background: linear-gradient(145deg, #151515, #0d0d0d);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 10px;
+            padding: 2rem;
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(155, 89, 182, 0.3);
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, var(--red), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--red);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(155, 89, 182, 0.3);
+        }
+        
+        .modal-button {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(45deg, var(--purple), var(--blue));
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-button:hover {
+            background: linear-gradient(45deg, var(--blue), var(--purple));
+            transform: translateY(-2px);
+        }
+        
+        /* === АДАПТИВНОСТЬ === */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .members-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        /* === МОБИЛЬНОЕ МЕНЮ === */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(10, 10, 10, 0.95);
+                padding: 1rem;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="logo">PvPch Clan</div>
+        <div class="nav-links">
+            <a href="#about" class="nav-link">О клане</a>
+            <a href="#members" class="nav-link">Участники</a>
+            <a href="#rules" class="nav-link">Правила</a>
+        </div>
+        <button class="mobile-menu-toggle">☰</button>
+    </nav>
+    
+    <!-- Герой секция -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Клан PvPch</h1>
+            <p>Добро пожаловать на официальный сайт клана PvPch сервера Gamepe.ru. Мы объединяем лучших игроков, стремящихся к победе и совершенству в игре.</p>
+            <p>Мы ведём также разработку собственного сервера PvPch или даже уже создали вся информация у главы клана или модерации клана.</p>
+            <button class="cta-button" id="join-button">Вступить в клан</button>
+        </div>
+    </section>
+    
+    <!-- О клане -->
+    <section class="section about" id="about">
+        <h2 class="section-title">О нашем клане</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>1.Клан был создан в 2014 году на сервере PlayMine клан на то время был в топ 10 среди кланов.</p>
+                <p>2.Клан насчитывал около 200-300 человек и находился в топе на 1-5 местах спиcка топов.</p>
+                <p>3.Клану фактически 10,5 лет</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Участники -->
+    <section class="section members" id="members">
+        <h2 class="section-title">Наши участники</h2>
+        <div class="members-grid">
+            <div class="member-card" data-member="leader">
+                <h3 class="member-name">MAKSSPRO2001</h3>
+                <span class="member-role">Лидер клана</span>
+                <div class="member-info">
+                    <p>Основатель и идейный вдохновитель клана PvPch</p>
+                </div>
+            </div>
+            
+            <div class="member-card" data-member="officer1">
+                <h3 class="member-name">KARAKURT_</h3>
+                <span class="member-role">Правая рука Главы</span>
+                <div class="member-info">
+                    <p>Человек который делает переговоры с вражескими кланами.</p>
+                </div>
+            </div>
+            
+            <div class="member-card" data-member="officer2">
+                <h3 class="member-name">qWertzxq</h3>
+                <span class="member-role">Заместитель</span>
+                <div class="member-info">
+                    <p>Делает работу если лидер будет занят</p>
+                </div>
+            </div>
+            
+            <div class="member-card" data-member="member1">
+                <h3 class="member-name">MORIARTY</h3>
+                <span class="member-role">Левая рука Главы</span>
+                <div class="member-info">
+                    <p>Человек который помогает по плагинам сервера</p>
+                </div>
+            </div>
+            
+            <div class="member-card" data-member="member2">
+                <h3 class="member-name">MyX</h3>
+                <span class="member-role">Гл.Строитель</span>
+                <div class="member-info">
+                    <p>Главный строитель клана.</p>
+                </div>
+            </div>
+            
+            <div class="member-card" data-member="member3">
+                <h3 class="member-name">kirilleazy</h3>
+                <span class="member-role">Главгый кто-то</span>
+                <div class="member-info">
+                    <p>Помогает по чем-то.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Правила -->
+    <section class="section rules" id="rules">
+        <h2 class="section-title">Основные правила клана</h2>
+        <div class="rules-content">
+            <div class="rule-item">
+                <h3 class="rule-title">Уважение к соклановцам</h3>
+                <p>Все члены клана должны относиться друг к другу с уважением. Оскорбления и токсичное поведение недопустимы.</p>
+            </div>
+            
+            <div class="rule-item">
+                <h3 class="rule-title">Активность</h3>
+                <p>Участники клана должны быть активны и регулярно участвовать в клановых мероприятиях. Отсутствие более 2 недель без предупреждения может привести к исключению.</p>
+            </div>
+            
+            <div class="rule-item">
+                <h3 class="rule-title">Взаимопомощь</h3>
+                <p>Помогайте другим участникам клана в их начинаниях. Мы команда, и наша сила в единстве.</p>
+            </div>
+            
+            <div class="rule-item">
+                <h3 class="rule-title">Клановые войны</h3>
+                <p>Участие в клановых войнах обязательно для всех членов клана, если нет уважительной причины для отсутствия.</p>
+            </div>
+            
+            <button class="cta-button" id="rules-button">Полный список правил</button>
+        </div>
+    </section>
+    
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Клан PvPch | Gamepe.ru</p>
+            <div class="social-links">
+                <a href="https://t.me/+hMI6w5Da27RjYmMy" class="social-link">TG</a>
+                <a href="https://vk.com/clanpvpch" class="social-link">VK</a>
+                <a href="#" class="social-link">DS</a>
+            </div>
+            <p>Свяжитесь с нами для вступления в клан</p>
+        </div>
+    </footer>
+    
+    <!-- Модальные окна -->
+    <!-- Модальное окно вступления -->
+    <div class="modal-overlay" id="join-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Вступление в клан</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Чтобы вступить в клан PvPch, необходимо соответствовать следующим требованиям:</p>
+                <ul style="margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+                    <li>Минимальный уровень: 30</li>
+                    <li>Опыт PvP сражений</li>
+                    <li>Готовность участвовать в клановых мероприятиях</li>
+                    <li>Иметь время для клана.</li>
+                </ul>
+                <p>Если вы соответствуете требованиям, заполните форму ниже:</p>
+                <form style="margin-top: 20px;">
+                    <div style="margin-bottom: 15px;">
+                        <label for="nickname" style="display: block; margin-bottom: 5px;">Ваш игровой ник:</label>
+                        <input type="text" id="nickname" style="width: 100%; padding: 8px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 4px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="level" style="display: block; margin-bottom: 5px;">Ваш уровень:</label>
+                        <input type="number" id="level" style="width: 100%; padding: 8px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 4px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="telegram" style="display: block; margin-bottom: 5px;">Ваш Telegram:</label>
+                        <input type="text" id="telegram" style="width: 100%; padding: 8px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 4px;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label for="experience" style="display: block; margin-bottom: 5px;">Опыт в PvP:</label>
+                        <textarea id="experience" style="width: 100%; padding: 8px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 4px; min-height: 100px;"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button" id="submit-join">Отправить заявку</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно правил -->
+    <div class="modal-overlay" id="rules-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Полный список правил клана</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="rule-item">
+                    <h3 class="rule-title">Правила клана на сервере:</h3>
+                    <p>1.Запрещаются моменталки между своими и на территории клан хома.</p>
+                    <p>2.Запрещяется оскорблять друг друга и родных.</p>
+                    <p>3.Запрещяется пвп без разрешения если пвп включено в клане.</p>
+                    <p>4.Взаимопомощь друг другу.</p>
+                    <p>5.На просьбу главы клана отвечать и по случаю помогать.</p>
+                    <p>6.В рг клан хома игрокам запрещено</p>
+                    <p>6.1.Разрешено модерации клана.</p>
+                    <p>6.2.Для игроков отдельный рг общага.</p>
+                    <p>7.Запрещено строить не пристойные постройки и гриф клана хома и т.д.</p>
+                    <p>8.Все вопросы к модерации клана или главе по случаю писать в тг или спрашивать лично.</p>
+                    <p>9.Не просить донат если вам сказали нету доната.</p>
+
+                </div>
+                
+                <div class="rule-item">
+                    <h3 class="rule-title">Правила для модерации клана:</h3>
+                    <p>Грубое обращение к игрокам т.к (иди нах, мат оск и другое ) даже если вас оскают штраф понижение звании или даже Кик с клана за не достойную работу касается всех даже замов.</p>
+                    <p>Без моего согласия не кого не понижать и не кикать с клана если вы делаете это то обязательно доки.</p>
+                    <p>Выдавать звания могут не только замы клана но и лидер клана слова лидера при выше всего.</p>
+                    <p>Если меня нет зам клана замещает.</p>
+                    <p>Если вы видите наличие грубого обращения в матном формате или оск то говорим мне.</p>
+                    <p>Так же кто ниже по званию тот не имеет права командовать игроками званием выше и тем более оскорблять.</p>
+                    <p>За все это штраф понижение звании или даже Кик с клана.</p>
+                    <p>Относится к игре</p>
+                </div>
+                
+                <div class="rule-item">
+                    <h3 class="rule-title">Клановые войны</h3>
+                    <p>Участие в клановых войнах обязательно для всех членов.</p>
+                    <p>Неучастие в войне без уважительной причины может привести к понижению ранга.</p>
+                    <p>Следуйте стратегии, разработанной лидером и офицерами.</p>
+                </div>
+                
+                <div class="rule-item">
+                    <h3 class="rule-title">Коммуникация</h3>
+                    <p>Все члены клана должны быть в клановом чате Telegram.</p>
+                    <p>Во время клановых мероприятий обязательно присутствие в голосовом чате.</p>
+                    <p>Важная информация распространяется через клановые каналы связи.</p>
+                </div>
+                
+                <div class="rule-item">
+                    <h3 class="rule-title">Ресурсы клана</h3>
+                    <p>Клановые ресурсы используются только для нужд клана.</p>
+                    <p>Распределением ресурсов занимаются мл.модераторы или выше по рангу клана.</p>
+                    <p>Кража клановых ресурсов карается немедленным исключением.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button modal-close-btn">Понятно</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальные окна участников -->
+    <div class="modal-overlay member-modal" id="leader-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">MAKSSPRO2001</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: rgba(255, 58, 76, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--red);">
+                        <h4 style="color: var(--red); margin-bottom: 5px;">Роль в клане</h4>
+                        <p>Лидер клана</p>
+                    </div>
+                    
+                    <div style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--purple);">
+                        <h4 style="color: var(--purple); margin-bottom: 5px;">Игровой ник</h4>
+                        <p>MAKSSPRO2001</p>
+                    </div>
+                    
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--blue);">
+                        <h4 style="color: var(--blue); margin-bottom: 5px;">Telegram</h4>
+                        <p>@MAKSSPRO2001</p>
+                    </div>
+                    
+                    <div style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--green);">
+                        <h4 style="color: var(--green); margin-bottom: 5px;">Достижения</h4>
+                        <ul style="margin-left: 20px; margin-top: 5px;">
+                            <li>Основатель клана PvPch</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--yellow);">
+                        <h4 style="color: var(--yellow); margin-bottom: 5px;">О игроке</h4>
+                        <p>Опытный стратег и лидер, играет с момента основания сервера. Всегда готов помочь новичкам и поделиться опытом.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay member-modal" id="officer1-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">KARAKURT_</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: rgba(255, 58, 76, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--red);">
+                        <h4 style="color: var(--red); margin-bottom: 5px;">Роль в клане</h4>
+                        <p>Правая рука Главы</p>
+                    </div>
+                    
+                    <div style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--purple);">
+                        <h4 style="color: var(--purple); margin-bottom: 5px;">Игровой ник</h4>
+                        <p>KARAKURT_</p>
+                    </div>
+                    
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--blue);">
+                        <h4 style="color: var(--blue); margin-bottom: 5px;">Telegram</h4>
+                        <p>@Builderlll</p>
+                    </div>
+                    
+                    <div style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--green);">
+                        <h4 style="color: var(--green); margin-bottom: 5px;">Достижения</h4>
+                        <ul style="margin-left: 20px; margin-top: 5px;">
+                            <li>Ведёт переговоры с вражескими кланами</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--yellow);">
+                        <h4 style="color: var(--yellow); margin-bottom: 5px;">О игроке</h4>
+                        <p>Человек который не только умеет болтать но и умеет строить.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay member-modal" id="officer2-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Maxsovmaxsov</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: rgba(255, 58, 76, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--red);">
+                        <h4 style="color: var(--red); margin-bottom: 5px;">Роль в клане</h4>
+                        <p>Заместитель, наставник</p>
+                    </div>
+                    
+                    <div style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--purple);">
+                        <h4 style="color: var(--purple); margin-bottom: 5px;">Игровой ник</h4>
+                        <p>Naxsovmaxsov</p>
+                    </div>
+                    
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--blue);">
+                        <h4 style="color: var(--blue); margin-bottom: 5px;">Telegram</h4>
+                        <p>@kyb_player</p>
+                    </div>
+                    
+                    <div style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--green);">
+                        <h4 style="color: var(--green); margin-bottom: 5px;">Достижения</h4>
+                        <ul style="margin-left: 20px; margin-top: 5px;">
+                            <li>Самый сильный в пвп в клане</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--yellow);">
+                        <h4 style="color: var(--yellow); margin-bottom: 5px;">О игроке</h4>
+                        <p>Терпеливый наставник и опытный боец. Отвечает за обучение новых членов клана и их интеграцию в команду.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay member-modal" id="member1-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">MORIARTY</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: rgba(255, 58, 76, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--red);">
+                        <h4 style="color: var(--red); margin-bottom: 5px;">Роль в клане</h4>
+                        <p>Левая рука Главы</p>
+                    </div>
+                    
+                    <div style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--purple);">
+                        <h4 style="color: var(--purple); margin-bottom: 5px;">Игровой ник</h4>
+                        <p>generally</p>
+                    </div>
+                    
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--blue);">
+                        <h4 style="color: var(--blue); margin-bottom: 5px;">Telegram</h4>
+                        <p>@MORIARTY7474</p>
+                    </div>
+                    
+                    <div style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--green);">
+                        <h4 style="color: var(--green); margin-bottom: 5px;">Достижения</h4>
+                        <ul style="margin-left: 20px; margin-top: 5px;">
+                            <li>Помогает с разработкой сервера</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--yellow);">
+                        <h4 style="color: var(--yellow); margin-bottom: 5px;">О игроке</h4>
+                        <p>Игрок который помогает воссоздать сервер для клана.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay member-modal" id="member2-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">МуХ</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: rgba(255, 58, 76, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--red);">
+                        <h4 style="color: var(--red); margin-bottom: 5px;">Роль в клане</h4>
+                        <p>Главный Строитель</p>
+                    </div>
+                    
+                    <div style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--purple);">
+                        <h4 style="color: var(--purple); margin-bottom: 5px;">Игровой ник</h4>
+                        <p>MyX</p>
+                    </div>
+                    
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--blue);">
+                        <h4 style="color: var(--blue); margin-bottom: 5px;">Telegram</h4>
+                        <p>@ReneseLotes</p>
+                    </div>
+                    
+                    <div style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--green);">
+                        <h4 style="color: var(--green); margin-bottom: 5px;">Достижения</h4>
+                        <ul style="margin-left: 20px; margin-top: 5px;">
+                            <li>Лучший строитель сервера.</li>
+                            <li>Но ему ещё далеко до KARAKURT_</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--yellow);">
+                        <h4 style="color: var(--yellow); margin-bottom: 5px;">О игроке</h4>
+                        <p>Умеет строить и всё.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal-overlay member-modal" id="member3-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">kirilleazy</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <div style="background: rgba(255, 58, 76, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--red);">
+                        <h4 style="color: var(--red); margin-bottom: 5px;">Роль в клане</h4>
+                        <p>Участник</p>
+                    </div>
+                    
+                    <div style="background: rgba(155, 89, 182, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--purple);">
+                        <h4 style="color: var(--purple); margin-bottom: 5px;">Игровой ник</h4>
+                        <p>kirilleazy</p>
+                    </div>
+                    
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--blue);">
+                        <h4 style="color: var(--blue); margin-bottom: 5px;">Telegram</h4>
+                        <p>@Kirilleazy</p>
+                    </div>
+                    
+                    <div style="background: rgba(46, 204, 113, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--green);">
+                        <h4 style="color: var(--green); margin-bottom: 5px;">Достижения</h4>
+                        <ul style="margin-left: 20px; margin-top: 5px;">
+                            <li>Чемпион по матам</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: rgba(241, 196, 15, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid var(--yellow);">
+                        <h4 style="color: var(--yellow); margin-bottom: 5px;">О игроке</h4>
+                        <p>Неизвестный чел с улицы.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Модальное окно успешной отправки заявки -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Заявка отправлена!</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 3rem; margin-bottom: 20px;">🎉</div>
+                    <p>Ваша заявка на вступление в клан PvPch успешно отправлена!</p>
+                    <p style="margin-top: 15px;">Наши офицеры рассмотрят её в ближайшее время и свяжутся с вами через Telegram.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button modal-close-btn">Закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // === ОСНОВНЫЕ ФУНКЦИИ ===
+        document.addEventListener('DOMContentLoaded', function() {
+            // Плавная прокрутка для навигации
+            document.querySelectorAll('.nav-link').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Мобильное меню
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Модальные окна
+            // Функция открытия модального окна
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Функция закрытия модального окна
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Закрытие всех модальных окон
+            function closeAllModals() {
+                document.querySelectorAll('.modal-overlay').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Кнопка вступления в клан
+            document.getElementById('join-button').addEventListener('click', function() {
+                openModal('join-modal');
+            });
+            
+            // Кнопка правил
+            document.getElementById('rules-button').addEventListener('click', function() {
+                openModal('rules-modal');
+            });
+            
+            // Карточки участников
+            document.querySelectorAll('.member-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const memberId = this.getAttribute('data-member');
+                    openModal(memberId + '-modal');
+                });
+            });
+            
+            // Закрытие модальных окон
+            document.querySelectorAll('.modal-close, .modal-close-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    closeAllModals();
+                });
+            });
+            
+            // Закрытие модального окна при клике вне его
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeAllModals();
+                    }
+                });
+            });
+            
+            // Отправка заявки
+            document.getElementById('submit-join').addEventListener('click', function() {
+                const nickname = document.getElementById('nickname').value;
+                const level = document.getElementById('level').value;
+                const telegram = document.getElementById('telegram').value;
+                const experience = document.getElementById('experience').value;
+                
+                // Проверка заполнения полей
+                if (nickname && level && telegram) {
+                    closeAllModals();
+                    setTimeout(() => {
+                        openModal('success-modal');
+                    }, 300);
+                } else {
+                    alert('Пожалуйста, заполните все обязательные поля!');
+                }
+            });
+            
+            // Анимация появления элементов при скролле
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.section-title, .about-text, .member-card, .rule-item');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.animation = 'fadeIn 1s forwards';
+                    }
+                });
+            };
+            
+            // Запуск анимации при загрузке и скролле
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Запуск при загрузке страницы
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'947eb8ac411902a4',t:'MTc0ODYxMzI0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
